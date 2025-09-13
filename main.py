@@ -16,7 +16,9 @@ class Level:
         self.level = 1
 
     def update(self, score):
-        if score >= 20:
+        if score >= 50:
+            self.level = 4
+        elif score >= 20:
             self.level = 3
         elif score >= 10:
             self.level = 2
@@ -31,7 +33,7 @@ class Game:
         self.level = Level()
 
         self.root.title("Кликер с уровнями")
-        self.root.geometry("400x400")
+        self.root.geometry("600x400")
 
         self.label_name = tk.Label(root, text=f"Игрок: {self.player.name}", font=("Arial", 14))
         self.label_name.pack(pady=10)
@@ -77,7 +79,9 @@ class Game:
         elif current_level == 3:
             self.level_message.config(text="Вау! Максимальный уровень! ")
             self.root.configure(bg="lightblue")
-
+        elif current_level == 4:
+            self.level_message.config(text="Это была шутка. Вот он. Максимальный уровень (наверное).")
+            self.root.configure(bg="lightgreen")
 
 def main():
     root = tk.Tk()
